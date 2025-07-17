@@ -2,46 +2,161 @@
 
 
 /**
- Question to sort 
- ✅ Basic Practice
+✅ Basic Practice
 
+
+
+
+Goal: Use selection sort logic but adjust it to sort numbers from largest to smallest.
 
 Sort an array of negative and positive integers in ascending order.
 
+Input: [0, -2, 5, -1, 3]
+
+Expected Output: [-2, -1, 0, 3, 5]
+
+Goal: Handle both negative and positive integers with selection sort.
+
 Find the second smallest element in an array using selection sort logic.
+
+Input: [7, 2, 8, 1, 4]
+
+Expected Output: 2
+
+Goal: Perform a partial selection sort to find the second smallest element without sorting the full array.
 
 ✅ Intermediate Level
 Sort an array of objects by a numeric property using selection sort.
-(e.g., sort users by age)
+
+Input:
+
+typescript
+Copy
+Edit
+[{ name: "A", age: 30 }, { name: "B", age: 25 }, { name: "C", age: 35 }]
+Expected Output:
+
+typescript
+Copy
+Edit
+[{ name: "B", age: 25 }, { name: "A", age: 30 }, { name: "C", age: 35 }]
+Goal: Sort objects by the age property in ascending order.
 
 Count the number of swaps performed during selection sort.
 
+Input: [3, 1, 2]
+
+Expected Output: 2 (Number of swaps performed)
+
+Goal: Implement selection sort and return the count of swaps.
+
 Modify selection sort to sort only the first k smallest elements.
 
+Input: [5, 4, 3, 2, 1], k = 3
+
+Expected Output: [1, 2, 3, 5, 4]
+
+Goal: Perform selection sort only for the first k positions.
+
 Sort an array of characters by their ASCII values using selection sort.
+
+Input: ['d', 'a', 'c', 'b']
+
+Expected Output: ['a', 'b', 'c', 'd']
+
+Goal: Sort based on ASCII values.
 
 ✅ Edge Cases & Theory
 How does selection sort behave when the array is already sorted?
 
+Input: [1, 2, 3, 4, 5]
+
+Expected Behavior: It still compares all elements but performs zero swaps.
+
 How does selection sort behave when all elements are the same?
+
+Input: [2, 2, 2, 2]
+
+Expected Behavior: No swaps required; selection sort runs normally with unnecessary comparisons.
 
 What is the worst-case time complexity of selection sort? Explain with an example.
 
+Input: [5, 4, 3, 2, 1]
+
+Expected Answer: O(n²) because in every iteration you still check all remaining elements regardless of order.
+
 What is the space complexity of selection sort? Why is it considered in-place sorting?
+
+Answer Expected:
+
+Space Complexity: O(1)
+
+Reason: Because it uses only a constant amount of extra space for swapping.
 
 ✅ Thought Challenges
 Can you modify selection sort to sort in descending order with fewer swaps?
 
+Input: [1, 2, 3, 4, 5]
+
+Expected Output: [5, 4, 3, 2, 1]
+
+Goal: Find if there's any optimization possible when sorting descending.
+
 Implement a stable selection sort. (Hint: Requires shifting elements instead of swapping)
+
+Input: [4, 3, 3, 2, 1]
+
+Expected Output: [1, 2, 3, 3, 4]
+
+Goal: Implement selection sort so that equal elements retain their relative order (stable).
 
 Explain why selection sort is not a stable sorting algorithm with an example.
 
+Input Example:
+[ {value: 5, id: 1}, {value: 5, id: 2}, {value: 4, id: 3} ]
+
+Expected Explanation: Swapping can change the order of equal elements.
+
 ✅ Fun Coding Tasks
-Write a function that sorts even-index elements in ascending and odd-index elements in descending order using selection sort.
+Sort even-index elements in ascending and odd-index elements in descending order.
+
+Input: [5, 4, 3, 2, 1, 0]
+
+Expected Output: [1, 4, 3, 2, 5, 0]
+
+Goal: Apply selection sort separately on even/odd indexed elements.
 
 Given a matrix of numbers, sort each row using selection sort.
 
+Input:
+
+csharp
+Copy
+Edit
+[
+  [3, 1, 2],
+  [9, 5, 6]
+]
+Expected Output:
+
+csharp
+Copy
+Edit
+[
+  [1, 2, 3],
+  [5, 6, 9]
+]
+Goal: Apply selection sort on each row individually.
+
 Reverse an array using selection sort logic (by selecting the maximum each time).
+
+Input: [1, 2, 3, 4, 5]
+
+Expected Output: [5, 4, 3, 2, 1]
+
+Goal: Modify selection sort to reverse the array.
+
+If you want, I can pick some of these and write full code for you
  */
 
 
@@ -135,12 +250,42 @@ console.log('----------------------------* End    *----------------------------'
 
 
 
+/**
+Sort an array of floating-point numbers in descending order.
 
+Input: [3.5, 2.1, 4.7, 1.0]
 
+Expected Output: [4.7, 3.5, 2.1, 1.0]
+
+*/
+
+export const sortFloteinDecendingOrder = (array: number[]) => {
+    const length = array.length
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+        let maxIndex = i
+        for (let j = i+1; j < array.length; j++) {
+            if (array[i] < array[j]) {
+                maxIndex = j
+            }
+        }
+        if (maxIndex !== i) {
+            array[i] = array[maxIndex]
+            array[maxIndex] = element
+        }
+    }
+    return array
+}
 
 
 console.log('----------------------------* Output *----------------------------')
+const floatArray = [3.5, 2.1, 4.7, 1.0]
+const sortFloatByDecrementOrder = sortFloteinDecendingOrder([...floatArray])
+console.log(`input array : ${floatArray}`)
+console.log(`output  :  ${sortFloatByDecrementOrder}`)
 console.log('----------------------------* End    *----------------------------')
+// console.log('----------------------------* Output *----------------------------')
+// console.log('----------------------------* End    *----------------------------')
 
 
 
