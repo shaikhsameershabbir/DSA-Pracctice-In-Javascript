@@ -2,45 +2,13 @@
 
 
 /**
-✅ Basic Practice
 
 
 
 
-Goal: Use selection sort logic but adjust it to sort numbers from largest to smallest.
 
-Sort an array of negative and positive integers in ascending order.
 
-Input: [0, -2, 5, -1, 3]
 
-Expected Output: [-2, -1, 0, 3, 5]
-
-Goal: Handle both negative and positive integers with selection sort.
-
-Find the second smallest element in an array using selection sort logic.
-
-Input: [7, 2, 8, 1, 4]
-
-Expected Output: 2
-
-Goal: Perform a partial selection sort to find the second smallest element without sorting the full array.
-
-✅ Intermediate Level
-Sort an array of objects by a numeric property using selection sort.
-
-Input:
-
-typescript
-Copy
-Edit
-[{ name: "A", age: 30 }, { name: "B", age: 25 }, { name: "C", age: 35 }]
-Expected Output:
-
-typescript
-Copy
-Edit
-[{ name: "B", age: 25 }, { name: "A", age: 30 }, { name: "C", age: 35 }]
-Goal: Sort objects by the age property in ascending order.
 
 Count the number of swaps performed during selection sort.
 
@@ -184,13 +152,13 @@ export const sortInAccendingOrder = (arr: number[]) => {
 }
 
 
-console.log('----------------------------* Output *----------------------------')
+console.log('--------------------------------------------------------')
 const arr: number[] = [5, 4, 3, 2, 1]
 console.log('Example array of numbers ', arr)
 // Sort array in accending order 
 const accendinOrder = sortInAccendingOrder([...arr]); // Using spread operator to clone array
 console.log('array in ascending order  = ', accendinOrder)
-console.log('----------------------------* End    *----------------------------')
+console.log('--------------------------------------------------------')
 // 2 . sort array in decending order 
 export const sortInDecendingOrder = (arr: number[]) => {
     const arrLength = arr.length;
@@ -209,13 +177,13 @@ export const sortInDecendingOrder = (arr: number[]) => {
     }
     return arr;
 }
-console.log('----------------------------* Output *----------------------------')
+console.log('--------------------------------------------------------')
 const arr1: number[] = [5, 9, 4, 3, 2, 1]
 console.log('Example array of numbers ', arr1)
 // Sort array in accending order 
 const decendinOrder = sortInAccendingOrder(arr); // Using spread operator to clone array
 console.log('array in decending  order  = ', decendinOrder)
-console.log('----------------------------* End    *----------------------------')
+console.log('--------------------------------------------------------')
 // 3 . Sort a list of strings alphabetically using selection sort.
 /**
   - Input: ["banana", "apple", "cherry", "date"]
@@ -239,13 +207,13 @@ export const sortStringsInAlphabeticalOrder = (array: string[]) => {
     return array;
 }
 
-console.log('----------------------------* Output *----------------------------')
+console.log('--------------------------------------------------------')
 const stringArray = ['Banana', 'Apple', 'Aapple', 'zebra', 'cobra']
 // Sort string in alphabetical order 
 console.log('array of string to sort ', stringArray)
 const stringSort = sortStringsInAlphabeticalOrder(stringArray)
 console.log('sort strin in acending alphabetical order ', stringSort)
-console.log('----------------------------* End    *----------------------------')
+console.log('--------------------------------------------------------')
 
 
 
@@ -264,7 +232,7 @@ export const sortFloteinDecendingOrder = (array: number[]) => {
     for (let i = 0; i < array.length; i++) {
         const element = array[i];
         let maxIndex = i
-        for (let j = i+1; j < array.length; j++) {
+        for (let j = i + 1; j < array.length; j++) {
             if (array[i] < array[j]) {
                 maxIndex = j
             }
@@ -278,23 +246,89 @@ export const sortFloteinDecendingOrder = (array: number[]) => {
 }
 
 
-console.log('----------------------------* Output *----------------------------')
+console.log('--------------------------------------------------------')
 const floatArray = [3.5, 2.1, 4.7, 1.0]
 const sortFloatByDecrementOrder = sortFloteinDecendingOrder([...floatArray])
 console.log(`input array : ${floatArray}`)
 console.log(`output  :  ${sortFloatByDecrementOrder}`)
-console.log('----------------------------* End    *----------------------------')
-// console.log('----------------------------* Output *----------------------------')
-// console.log('----------------------------* End    *----------------------------')
+console.log('--------------------------------------------------------')
+
+
+
+/*
+Find the second smallest element in an array using selection sort logic.
+
+Input: [7, 2, 8, 1, 4]
+
+Expected Output: 2
+*/
+
+export const getSecondSmallest = (array: number[]) => {
+    const length = array.length;
+    for (let i = 0; i < 2; i++) {
+        let minIndex = i;
+        for (let j = i + 1; j < array.length; j++) {
+            if (array[minIndex] > array[j]) {
+                minIndex = j
+            }
+        }
+        if (minIndex !== i) {
+            const temp = array[i];
+            array[i] = array[minIndex];
+            array[minIndex] = temp
+        }
+    }
+    return array[1]
+}
+
+console.log('--------------------------------------------------------')
+console.log('Output for - To find the second smallest element in the array !')
+const arrayToFindSecodSmallest = [7, 2, 8, 1, 4]
+const output = getSecondSmallest([...arrayToFindSecodSmallest])
+console.log(`Input Array : ${arrayToFindSecodSmallest}`)
+console.log(`Output : ${output}`)
+console.log('--------------------------------------------------------')
 
 
 
 
 
 
+// ✅ Intermediate Level
+/*
+Sort an array of objects by a numeric property using selection sort.
+[{ name: "A", age: 30 }, { name: "B", age: 25 }, { name: "C", age: 35 }]
+Expected Output:
 
+typescript
+Copy
+Edit
+[{ name: "B", age: 25 }, { name: "A", age: 30 }, { name: "C", age: 35 }]
+Goal: Sort objects by the age property in ascending order.
+*/
 
+export const sortObjectsByNumericProperty = (array: { name: string, age: number }[]) => {
+    const length = array.length;
+    for (let i = 0; i < length; i++) {
+        let minIndex = i;
+        for (let j = i + 1; j < length; j++) {
+            if (array[minIndex].age > array[j].age) {
+                minIndex = j;
+            }
+        }
+        if (minIndex !== i) {
+            const temp = array[i];
+            array[i] = array[minIndex];
+            array[minIndex] = temp;
+        }
+    }
+    return array;
+}
 
-
-
+console.log('--------------------------------------------------------')
+const objectsArray = [{ name: "A", age: 30 }, { name: "B", age: 25 }, { name: "C", age: 35 }]
+const sortedObjects = sortObjectsByNumericProperty(objectsArray)
+console.log(`Input Array : ${objectsArray}`)
+console.log(`Output : ${sortedObjects}`)
+console.log('--------------------------------------------------------')
 
