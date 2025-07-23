@@ -10,13 +10,6 @@
 
 
 
-Count the number of swaps performed during selection sort.
-
-Input: [3, 1, 2]
-
-Expected Output: 2 (Number of swaps performed)
-
-Goal: Implement selection sort and return the count of swaps.
 
 Modify selection sort to sort only the first k smallest elements.
 
@@ -332,3 +325,44 @@ console.log(`Input Array : ${objectsArray}`)
 console.log(`Output : ${sortedObjects}`)
 console.log('--------------------------------------------------------')
 
+/*
+
+Count the number of swaps performed during selection sort.
+
+Input: [3, 1, 2]
+
+Expected Output: 2 (Number of swaps performed)
+
+Goal: Implement selection sort and return the count of swaps.
+
+
+*/
+
+export const getNumberOfSwapsInSelectionSort = (array: number[]) => {
+    const totallenght = array.length;
+    let numberOfSwap = 0;
+    for (let index = 0; index < array.length; index++) {
+        let min = index;
+        for (let i = index + 1; i < array.length; i++) {
+            if (array[min] > array[i]) {
+                min = i
+            }
+        }
+        if (min !== index) {
+            let temp = array[index];
+            array[index] = array[min];
+            array[min] = temp;
+            numberOfSwap++
+        }
+
+    }
+    return { array, numberOfSwap }
+}
+
+
+console.log('--------------------------------------------------------')
+const checkNuperofSwap = [9,8,7,6,5,4,3,2,1]
+const out = getNumberOfSwapsInSelectionSort(checkNuperofSwap)
+console.log(`Input Array : ${checkNuperofSwap}`)
+console.log(`Output :- sor tedArray : ${out.array} , number of swaps :${out.numberOfSwap} `)
+console.log('--------------------------------------------------------')
