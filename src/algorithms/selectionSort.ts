@@ -11,48 +11,10 @@
 
 
 
-Modify selection sort to sort only the first k smallest elements.
 
-Input: [5, 4, 3, 2, 1], k = 3
 
-Expected Output: [1, 2, 3, 5, 4]
 
-Goal: Perform selection sort only for the first k positions.
 
-Sort an array of characters by their ASCII values using selection sort.
-
-Input: ['d', 'a', 'c', 'b']
-
-Expected Output: ['a', 'b', 'c', 'd']
-
-Goal: Sort based on ASCII values.
-
-✅ Edge Cases & Theory
-How does selection sort behave when the array is already sorted?
-
-Input: [1, 2, 3, 4, 5]
-
-Expected Behavior: It still compares all elements but performs zero swaps.
-
-How does selection sort behave when all elements are the same?
-
-Input: [2, 2, 2, 2]
-
-Expected Behavior: No swaps required; selection sort runs normally with unnecessary comparisons.
-
-What is the worst-case time complexity of selection sort? Explain with an example.
-
-Input: [5, 4, 3, 2, 1]
-
-Expected Answer: O(n²) because in every iteration you still check all remaining elements regardless of order.
-
-What is the space complexity of selection sort? Why is it considered in-place sorting?
-
-Answer Expected:
-
-Space Complexity: O(1)
-
-Reason: Because it uses only a constant amount of extra space for swapping.
 
 ✅ Thought Challenges
 Can you modify selection sort to sort in descending order with fewer swaps?
