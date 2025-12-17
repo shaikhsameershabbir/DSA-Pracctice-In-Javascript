@@ -13,7 +13,9 @@
         "binarySearch": "ts-node src/algorithms/binarySearch.ts",
         "linearSearch": "ts-node src/algorithms/linearSearch.ts",
         "fibonacci": "ts-node src/algorithms/fibonacci.ts",
-        "factorial": "ts-node src/algorithms/factorial.ts"
+        "factorial": "ts-node src/algorithms/factorial.ts",
+        "d1":"ts-node src/questions/question1.ts"
+
     },
     "author": "",
     "license": "ISC",
