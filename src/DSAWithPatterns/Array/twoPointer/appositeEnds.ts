@@ -68,4 +68,26 @@ const getPalendrome = (str: string) => {
 }
 
 
-console.log('----------', getPalendrome('racecar'))
+// console.log('----------', getPalendrome('racecar'))
+
+/**
+ * Given a sorted array, return indices of two numbers such that they add up to target.
+ *  Input: arr = [2,7,11,15], target = 9  
+ *  Output: [0,1]
+ */
+
+const getTwoSum = (nums: number[], target: number) => {
+    let start = 0, end = nums.length - 1;
+    while (start < end) {
+        if (nums[start] + nums[end] > target) {
+            end--;
+        } else if (nums[start] + nums[end] < target) {
+            start++
+        } else {
+            return [start, end]
+        }
+    }
+    return []
+}
+
+console.log('-------->', getTwoSum([2, 7, 11, 15], 26))
