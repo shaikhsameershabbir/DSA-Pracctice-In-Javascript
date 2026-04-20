@@ -90,4 +90,56 @@ const getTwoSum = (nums: number[], target: number) => {
     return []
 }
 
-console.log('-------->', getTwoSum([2, 7, 11, 15], 26))
+// console.log('-------->', getTwoSum([2, 7, 11, 15], 26))
+
+/**
+ * Given an array where each element represents height, find two lines that together form a container holding the maximum water.
+ * Input: [1,8,6,2,5,4,8,3,7]
+Output: 49
+ */
+
+const getContainerWithMostWater = (nums: number[]) => {
+    let maxarea = 0, start = 0, end = nums.length - 1;
+    while (start < end) {
+        let width = end - start;
+        let area = Math.min(nums[start], nums[end]) * width;
+        maxarea = Math.max(maxarea, area);
+        if (nums[start] < nums[end]) {
+            start++
+        } else {
+            end--
+        }
+    }
+    return maxarea
+}
+// console.log('----------->', getContainerWithMostWater([12, 8, 6, 2, 5, 4, 12, 3, 7]))
+
+
+/** Leetcode prblem number 38 
+ * 
+ * Trapping the rain water 
+ * Input: [4,2,0,7,2,5]
+ * Output: 6
+ * 
+ **/
+const getRainWaterStoreNiveApproach = (height: number[]) => {
+    let water = 0;
+
+    for (let i = 0; i < height.length; i++) {
+        let leftMax = 0;
+        let rightMax = 0;
+        //Define leftmax
+        for (let j = i; j >= 0; j--) {
+            leftMax = Math.max(leftMax, height[i])
+        }
+        // Define rightMax 
+        for (let k = i; k < height.length; k++) {
+            rightMax = Math.max(rightMax, height[k])
+        }
+        water += Math.min(leftMax, rightMax) - height[i]
+    }
+    return water
+
+}
+
+console.log(getRainWaterStoreNiveApproach([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
