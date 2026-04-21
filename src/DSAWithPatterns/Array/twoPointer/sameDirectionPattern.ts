@@ -93,5 +93,16 @@ const removeTarget = (nums: number[], target: number) => {
     nums.length = left
     return nums
 }
-console.log(removeTarget([3, 2, 2, 3], 3))
+// console.log(removeTarget([3, 2, 2, 3], 3))
 
+/**
+ * Q6 — Longest Substring Without Repeating Characters
+ * Problem:
+ * Find length of longest substring without repeating characters.
+ * Input: "abcabcbb"
+ * Output: 3 ("abc")
+ */
+
+const getLongestString = (str: string) => {
+
+}
