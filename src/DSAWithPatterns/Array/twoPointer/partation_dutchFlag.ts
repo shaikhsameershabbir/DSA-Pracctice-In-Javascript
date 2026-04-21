@@ -37,3 +37,5 @@ const dutchFlag = (nums: number[]) => {
     return nums
 }
 console.log(dutchFlag([2, 0, 2, 0, 1, 1, 1, 0]))
+
+

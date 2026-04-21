@@ -73,4 +73,25 @@ const moveZeros = (nums: number[]) => {
     }
     return nums
 }
-console.log(moveZeros([0, 1, 2, 0, 5, 0, 6, 0]))
+// console.log(moveZeros([0, 1, 2, 0, 5, 0, 6, 0]))
+
+
+/**
+ * Remove all occurrences of a value in-place and return new length.
+ * Input: nums = [3,2,2,3], val = 3  
+ * Output: 2 → [2,2]
+ */
+
+const removeTarget = (nums: number[], target: number) => {
+    let left = 0;
+    for (let right = 0; right < nums.length; right++) {
+        if (nums[right] !== target) {
+            nums[left] = nums[right]
+            left++
+        }
+    }
+    nums.length = left
+    return nums
+}
+console.log(removeTarget([3, 2, 2, 3], 3))
+
