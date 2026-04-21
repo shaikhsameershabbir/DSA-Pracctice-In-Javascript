@@ -122,24 +122,79 @@ const getContainerWithMostWater = (nums: number[]) => {
  * Output: 6
  * 
  **/
+
+// bruit force method 
 const getRainWaterStoreNiveApproach = (height: number[]) => {
     let water = 0;
 
     for (let i = 0; i < height.length; i++) {
-        let leftMax = 0;
-        let rightMax = 0;
-        //Define leftmax
+        let leftMax = 0, rightMax = 0;
+        // calculate leftMax
         for (let j = i; j >= 0; j--) {
-            leftMax = Math.max(leftMax, height[i])
+            leftMax = Math.max(leftMax, height[j])
         }
-        // Define rightMax 
         for (let k = i; k < height.length; k++) {
-            rightMax = Math.max(rightMax, height[k])
+            rightMax = Math.max(rightMax, height[k]);
         }
+        // Calculate wate 
         water += Math.min(leftMax, rightMax) - height[i]
     }
     return water
-
 }
 
-console.log(getRainWaterStoreNiveApproach([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
+// console.log(getRainWaterStoreNiveApproach([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
+// Time commplexity O(3n)
+// Approach that can beaccepted 
+
+const getRainWaterStoreNiveApproachBest = (height: number[]) => {
+    let leftMax = new Array(height.length).fill(0)
+    let rightMax = new Array(height.length).fill(0)
+    let water = 0;
+    leftMax[0] = height[0]
+    rightMax[height.length - 1] = height[height.length - 1]
+    // leftMax
+    for (let i = 1; i < height.length; i++) {
+        leftMax[i] = Math.max(leftMax[i - 1], height[i])
+    }
+    // RightMax
+    for (let i = height.length - 2; i >= 0; i--) {
+        rightMax[i] = Math.max(rightMax[i + 1], height[i])
+    }
+    for (let index = 0; index < height.length; index++) {
+        water += Math.min(leftMax[index], rightMax[index]) - height[index]
+
+    }
+    return water
+}
+// console.log(getRainWaterStoreNiveApproachBest([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
+
+
+
+// Using Two pointer Approach 
+// Timer complexity O(1)
+
+const getTrapedWater = (height: number[]) => {
+    let traperWater = 0,
+        leftMax = 0,
+        rightMax = 0,
+        left = 0,
+        right = height.length - 1;
+
+    while (left < right) {
+        leftMax = Math.max(leftMax, height[left]);
+        rightMax = Math.max(rightMax, height[right]);
+
+        if (leftMax < rightMax) {
+            traperWater += leftMax - height[left];
+            left++;
+        } else {
+            traperWater += rightMax - height[right];
+            right--;
+        }
+    }
+
+    return traperWater;
+};
+
+
+console.log(getTrapedWater([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
