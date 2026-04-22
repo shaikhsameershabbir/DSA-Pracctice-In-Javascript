@@ -30,4 +30,5 @@ const getSubArray = (nums: number[], target: number) => {
     }
     return minLenght === Infinity ? 0 : minLenght
 }
-console.log(getSubArray([2, 3, 1, 2, 4, 3], 7))
+// console.log(getSubArray([2, 3, 1, 2, 4, 3], 7))
+
