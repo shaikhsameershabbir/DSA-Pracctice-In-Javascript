@@ -18,6 +18,7 @@
  shrink  to minimise the lenght 
 */
 
+
 const getSubArray = (nums: number[], target: number) => {
     let left = 0, sum = 0, minLenght = Infinity;
     for (let right = 0; right < nums.length; right++) {
